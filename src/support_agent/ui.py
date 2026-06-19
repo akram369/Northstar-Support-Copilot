@@ -2,6 +2,12 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import sys
+
+# Add the 'src' directory to sys.path so support_agent is importable when deployed to Streamlit Cloud
+src_path = str(Path(__file__).resolve().parents[1])
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
 
 import streamlit as st
 
