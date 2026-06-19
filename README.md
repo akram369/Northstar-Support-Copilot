@@ -45,7 +45,7 @@ The workflow remains intentionally explicit rather than hiding routing inside a 
 | Embeddings | Deterministic 768-dimensional feature hashing |
 | Vector database | SQLite with persisted vectors and metadata |
 | Similarity | Cosine similarity |
-| LLM providers | OpenAI Responses API or local Ollama |
+| LLM providers | Google Gemini API, OpenAI Responses API, or local Ollama |
 | Offline fallback | Retrieval-only grounded template generator |
 | Tests | pytest 8.2+ |
 
@@ -75,6 +75,20 @@ The first question automatically indexes the documents if `--ingest` was not run
 ## LLM configuration
 
 The default `template` mode is fully local. It is an extractive safety fallback intended to prove retrieval, citations, routing, and escalation without an API key. For the assignment demo, configure an actual LLM.
+
+### Google Gemini
+
+```env
+LLM_PROVIDER=gemini
+GEMINI_API_KEY=your_key_here
+GEMINI_MODEL=gemini-2.5-flash
+```
+
+Then install the provider extra:
+
+```bash
+pip install -e ".[gemini]"
+```
 
 ### OpenAI
 
