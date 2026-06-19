@@ -1,0 +1,2 @@
+[console_scripts]
+northstar-support = support_agent.cli:main

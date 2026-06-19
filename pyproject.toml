@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "northstar-persona-support"
+version = "1.0.0"
+description = "Persona-adaptive customer support agent with grounded retrieval and human escalation"
+requires-python = ">=3.11"
+dependencies = [
+  "pypdf>=4.2,<6",
+  "python-dotenv>=1.0,<2",
+  "streamlit>=1.36,<2",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=1.40,<3"]
+dev = ["pytest>=8.2,<9", "ruff>=0.5,<1", "reportlab>=4.2,<5"]
+
+[project.scripts]
+northstar-support = "support_agent.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
